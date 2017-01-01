@@ -1,3 +1,50 @@
+
+(defproject demo "0.1.0-SNAPSHOT"
+  :description "DEMO"
+  :min-lein-version "2.6.1"
+
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojurescript "1.9.229"]
+                 [commons-io "2.5"]
+
+                 [navis/untangled-client "0.5.6"]
+                 [untangled/om-css "1.0.0"]
+                 [org.omcljs/om "1.0.0-alpha45"]
+
+                 [liberator "0.14.1"]
+                 [compojure "1.5.1"]
+
+                 [cljsjs/victory "0.9.0-0"]
+                 [navis/untangled-spec "0.3.9" :scope "test"]
+                 [org.clojure/core.async "0.2.391"]
+                 [http-kit "2.2.0"]
+                 [com.taoensso/timbre "4.3.1"]
+                 [navis/untangled-server "0.6.2" :exclusions [hiccup]]]
+
+  :plugins [[lein-cljsbuild "1.1.4"]]
+
+  :uberjar-name "demo.jar"
+
+  :source-paths ["src/server"]
+  :clean-targets ^{:protect false} ["target" "resources/public/js/prod" "resources/public/js/cards" "resources/public/js/specs" "resources/public/js/dev"
+                                    "resources/public/js/demo.min.js"
+                                    "resources/public/js/demo.js"]
+
+  :figwheel {:css-dirs ["resources/public/css"]}
+
+  :profiles {:uberjar {:main      demo.core
+                       :aot       :all
+                       :prep-tasks ["compile"
+                                    ["cljsbuild" "once" "production"]]
+                       :cljsbuild {:builds [{:id           "production"
+                                             :source-paths ["src/client"]
+                                             :jar          true
+                                             :compiler     {:main          demo.main
+                                                            :output-to     "resources/public/js/demo.min.js"
+                                                            :output-dir    "resources/public/js/prod"
+                                                            :asset-path    "js/prod"
+                                                            :optimizations :simple}}]}}})
+
 (defproject untangled-todomvc "1.0.3-SNAPSHOT"
   :description "TodoMVC implemention using untangled.client"
   :url "http://www.thenavisway.com/"
