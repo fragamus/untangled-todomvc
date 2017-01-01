@@ -3,6 +3,7 @@
   :url "http://www.thenavisway.com/"
   :license {:name "MIT"
             :url  "https://opensource.org/licenses/MIT"}
+  :min-lein-version "2.6.1
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.229"]
