@@ -71,15 +71,15 @@
                                        :asset-path    "js"
                                        :output-dir    "resources/private/js"
                                        :optimizations :none}}
-                       {:id           "support"
-                        :source-paths ["src/client"]
-                        :figwheel     true
-                        :compiler     {:main                 "untangled-todomvc.support-viewer"
-                                       :asset-path           "js/compiled/support"
-                                       :output-to            "resources/public/js/compiled/support.js"
-                                       :output-dir           "resources/public/js/compiled/support"
-                                       :recompile-dependents true
-                                       :optimizations        :none}}
+                       ; {:id           "support"
+                       ;  :source-paths ["src/client"]
+                       ;  :figwheel     true
+                       ;  :compiler     {:main                 "untangled-todomvc.support-viewer"
+                       ;                 :asset-path           "js/compiled/support"
+                       ;                 :output-to            "resources/public/js/compiled/support.js"
+                       ;                 :output-dir           "resources/public/js/compiled/support"
+                       ;                 :recompile-dependents true
+                       ;                 :optimizations        :none}}
 
                        {:id           "production"
                         :source-paths ["src/client"]
