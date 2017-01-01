@@ -5,6 +5,7 @@
             :url  "https://opensource.org/licenses/MIT"}
   :min-lein-version "2.6.1"
   :verbose true
+  :uberjar-name "uberjar.jar"
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.229"]
@@ -23,11 +24,9 @@
                  [com.stuartsierra/component "0.3.1"]
                  [navis/untangled-spec "0.3.6" :scope "test"]]
 
-  :plugins [[lein-cljsbuild "1.1.4"]
+  :plugins [[lein-cljsbuild "1.1.5"]
             [lein-doo "0.1.7" :exclusions [org.clojure/tools.reader]]
             [navis/untangled-lein-i18n "0.1.2" :exclusions [org.codehaus.plexus/plexus-utils org.clojure/tools.cli org.apache.maven.wagon/wagon-provider-api]]]
-
-  :uberjar-name "uberjar.jar"
 
   :doo {:build "automated-tests"
         :paths {:karma "node_modules/karma/bin/karma"}}
@@ -40,6 +39,7 @@
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target" "i18n/out"]
   :source-paths ["src/server"]
+  :test-paths ["src/server" "specs/server"]
 
   :cljsbuild {:builds [{:id           "dev"
                         :source-paths ["dev/client" "src/client"]
@@ -71,15 +71,15 @@
                                        :asset-path    "js"
                                        :output-dir    "resources/private/js"
                                        :optimizations :none}}
-                       ; {:id           "support"
-                       ;  :source-paths ["src/client"]
-                       ;  :figwheel     true
-                       ;  :compiler     {:main                 "untangled-todomvc.support-viewer"
-                       ;                 :asset-path           "js/compiled/support"
-                       ;                 :output-to            "resources/public/js/compiled/support.js"
-                       ;                 :output-dir           "resources/public/js/compiled/support"
-                       ;                 :recompile-dependents true
-                       ;                 :optimizations        :none}}
+                       {:id           "support"
+                        :source-paths ["src/client"]
+                        :figwheel     true
+                        :compiler     {:main                 "untangled-todomvc.support-viewer"
+                                       :asset-path           "js/compiled/support"
+                                       :output-to            "resources/public/js/compiled/support.js"
+                                       :output-dir           "resources/public/js/compiled/support"
+                                       :recompile-dependents true
+                                       :optimizations        :none}}
 
                        {:id           "production"
                         :source-paths ["src/client"]
@@ -97,6 +97,7 @@
 
   :profiles {
              :dev {
+                   :source-paths ["dev/server" "dev/watcher" "src/server"]
                    :repl-options {
                                   :init-ns          user
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]
