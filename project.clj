@@ -3,7 +3,7 @@
   :url "http://www.thenavisway.com/"
   :license {:name "MIT"
             :url  "https://opensource.org/licenses/MIT"}
-  :min-lein-version "2.6.1
+  :min-lein-version "2.6.1"
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.229"]
@@ -25,6 +25,8 @@
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-doo "0.1.7" :exclusions [org.clojure/tools.reader]]
             [navis/untangled-lein-i18n "0.1.2" :exclusions [org.codehaus.plexus/plexus-utils org.clojure/tools.cli org.apache.maven.wagon/wagon-provider-api]]]
+
+  :uberjar-name "uberjar.jar"
 
   :doo {:build "automated-tests"
         :paths {:karma "node_modules/karma/bin/karma"}}
@@ -104,4 +106,13 @@
                                   [juxt/dirwatch "0.2.3"]
                                   [binaryage/devtools "0.6.1" :exclusions [environ]]
                                   [com.cemerick/piggieback "0.2.1"]
-                                  [org.clojure/tools.nrepl "0.2.12"]]}})
+                                  [org.clojure/tools.nrepl "0.2.12"]]}
+
+             :uberjar {:main      untangled-todomvc.core
+                       :aot       :all
+                       :prep-tasks ["compile"
+                                    ["cljsbuild" "once" "production"]]
+                      }
+
+            }
+)
