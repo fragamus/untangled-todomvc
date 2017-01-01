@@ -39,7 +39,7 @@
                    }
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target" "i18n/out"]
-  :source-paths ["dev/server" "dev/watcher" "src/client" "src/server" "specs/client" "specs/server"]
+  :source-paths ["src/server"]
 
   :cljsbuild {:builds [{:id           "dev"
                         :source-paths ["dev/client" "src/client"]
