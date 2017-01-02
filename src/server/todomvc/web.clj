@@ -27,4 +27,4 @@
 (defn -main
     "Main entry point for the server"
     [& args]
-    (do (printf "starting app............config=\"%s\"........." (System/getProperty "config"))  (go)) ) 
+    (do (printf "starting app .......... config=\"%s\" ........." (System/getProperty "config"))  (go)) ) 
