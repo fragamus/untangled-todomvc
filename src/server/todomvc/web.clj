@@ -5,7 +5,6 @@
     [clojure.stacktrace :refer (print-stack-trace)]
     [clojure.tools.namespace.repl :refer [disable-reload! refresh clear set-refresh-dirs]]
     [com.stuartsierra.component :as component]
-    [figwheel-sidecar.repl-api :as ra]
     [taoensso.timbre :refer [info set-level!] :as timbre]
     [todomvc.system :as system]
 ))
