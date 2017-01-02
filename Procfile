@@ -1,1 +1,1 @@
-web: JVM_OPTS="-Dconfig=config/production.edn" java $JVM_OPTS -Dconfig=config/production.edn -cp uberjar.jar clojure.main -m todomvc.web
+web: java $JVM_OPTS -Dconfig=config/production.edn -cp target/uberjar.jar clojure.main -m todomvc.web
