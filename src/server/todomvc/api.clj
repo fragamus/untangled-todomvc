@@ -51,7 +51,35 @@
                   result @(d/transact connection tx)
                   tempid->realid (:tempids result)
                   omids->realids (resolve-ids (d/db connection) omid->tempid tempid->realid)]
-             {:tempids omids->realids})})
+             
+
+
+(do  
+
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+    (println "Hello, STDOUT!")   
+
+             {:tempids omids->realids}
+
+
+)
+
+
+
+             )})
 
 (defmethod apimutate 'todo/check [{:keys [todo-database]} _ {:keys [id]}]
   {:action #(let [connection (db/get-connection todo-database)
